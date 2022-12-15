@@ -1,5 +1,6 @@
 import { Content } from '../entities/Content';
 import { Notification } from '../entities/Notification';
+import { NotificationRepository } from '../repositories/NotificationRepository';
 
 interface SendNotificationProps {
   recipientId: string;
@@ -12,6 +13,10 @@ interface SendNotificationResponse {
 }
 
 export class SendNotification {
+  constructor(
+    private notificationsRepository: NotificationRepository
+  ) {}
+
   async execute(
     request: SendNotificationProps,
   ): Promise<SendNotificationResponse> {
@@ -22,6 +27,8 @@ export class SendNotification {
       content: new Content(content),
       category,
     });
+
+    await this.notificationsRepository.create(notification)
 
     return {
       notification,

@@ -1,15 +1,24 @@
+import { Notification } from "../entities/Notification";
 import { SendNotification } from "./SendNotification"
+
+const notifications: Notification[] = [];
+
+const notificationsRepository = {
+  async create(notification: Notification) {
+    notifications.push(notification)
+  }
+}
 
 describe("Send Notification", () => {
   it("should be able to send a notification", async () => {
-    const sendNotification = new SendNotification();
+    const sendNotification = new SendNotification(notificationsRepository);
 
-    const { notification } = await sendNotification.execute({
+    await sendNotification.execute({
       content: "This is a notification",
       category: "social",
       recipientId: "example-recipientId"
     })
 
-    expect(notification).toBeTruthy()
+    expect(notifications).toHaveLength(1)
   })
 })
