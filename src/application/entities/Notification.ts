@@ -19,11 +19,11 @@ export class Notification {
     }
   }
 
-  public get recepientId(): string {
+  public get recipientId(): string {
     return this.props.recipientId;
   }
 
-  public set recepientId(recipientId: string) {
+  public set recipientId(recipientId: string) {
     this.props.recipientId = recipientId;
   }
 
