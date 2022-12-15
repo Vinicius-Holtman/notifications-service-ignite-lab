@@ -1,7 +1,7 @@
 import { Content } from '../entities/Content';
 import { Notification } from '../entities/Notification';
 
-interface SendNotificationsProps {
+interface SendNotificationProps {
   recipientId: string;
   content: string;
   category: string;
@@ -11,9 +11,9 @@ interface SendNotificationResponse {
   notification: Notification;
 }
 
-export class SendNotifications {
+export class SendNotification {
   async execute(
-    request: SendNotificationsProps,
+    request: SendNotificationProps,
   ): Promise<SendNotificationResponse> {
     const { category, content, recipientId } = request;
 
