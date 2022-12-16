@@ -25,4 +25,8 @@ export class InMemoryNotificationsRepository implements NotificationRepository {
       this.notifications[notificationIndex] = notification
     }
   }
+
+  async countManyByRecipientId(recipientId: string): Promise<number> {
+    return this.notifications.filter(notification => notification.recipientId === recipientId).length
+  }
 }
