@@ -1,8 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Content } from '../entities/Content';
-import { Notification } from '../entities/Notification';
 import { NotificationRepository } from '../repositories/NotificationRepository';
-import { NotificationNotFound } from './notification-not-found';
 
 interface CountRecipientNotificationProps {
   recipientId: string
